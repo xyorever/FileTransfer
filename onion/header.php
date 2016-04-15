@@ -12,10 +12,24 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+
+<?php
+ $logout = wp_logout_url();
+ $logout = str_replace( '&amp;', '&', $logout );
+ ?>
+
+<script type="text/javascript">	
+
+
+ var logout_url = '<?php echo $logout; ?>';
+
+</script>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+
+
 
 <?php wp_head(); ?>
 
@@ -71,14 +85,14 @@
 							<a role="menuitem" tabindex="-1" href="https://auth.onion.io/realms/onion/account" class="dropdown-item" target="_blank">My Profile</a>
 							<a role="menuitem" tabindex="-1" href="https://store.onion.io/account" class="dropdown-item">My Orders</a>
 							<div class="dropdown-divider"></div>
-							<a role="menuitem" tabindex="-1" class="dropdown-item" href="<?= wp_logout_url() ?>">Logout</a>
+							<a role="menuitem" tabindex="-1" class="dropdown-item" href="<?= wp_logout_url() ?>" id="logout">Logout</a>
 						</div>
 					</div>
 				<?php else: ?>
-					<a class="btn btn-onion pull-xs-right" href="/login">Login</a>
+					<a class="btn btn-onion pull-xs-right" href="/login" id="login">Login</a>
 				<?php endif; ?>
 			</div>
-		</div>
+		</div>	
 	</header>
 
 	<div id="content" class="site-content">
